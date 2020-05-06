@@ -15,6 +15,7 @@ fn validate_contract(module: &[u8]) -> bool {
 
     // Ensure no start functions is present.
     if !CheckStartFunc::new(false).validate(&module).unwrap() {
+        panic!("start func failed");
         return false;
     }
 
@@ -24,6 +25,7 @@ fn validate_contract(module: &[u8]) -> bool {
         .validate(&module)
         .unwrap()
     {
+        panic!("verify exports failed");
         return false;
     }
 
@@ -33,6 +35,7 @@ fn validate_contract(module: &[u8]) -> bool {
         .validate(&module)
         .unwrap()
     {
+        panic!("verify imports failed");
         return false;
     }
 
