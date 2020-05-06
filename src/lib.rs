@@ -59,6 +59,10 @@ pub fn inject_metering(code: &[u8]) -> Result<Vec<u8>, parity_wasm::elements::Er
         }
     };
 
+    // making the gas import compatible with scout. remove this
+    let module_name = result.import_section().unwrap().entries().last().unwrap().module();
+    panic!("{}", module_name);
+
     parity_wasm::serialize(result)
 }
 
