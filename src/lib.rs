@@ -39,7 +39,8 @@ fn validate_contract(module: &[u8]) -> bool {
     true
 }
 
-fn inject_metering(code: &[u8]) -> Result<Vec<u8>, parity_wasm::elements::Error> {
+/// Takes contract bytecode as input and returns a new contract with metering injected.
+pub fn inject_metering(code: &[u8]) -> Result<Vec<u8>, parity_wasm::elements::Error> {
     if !validate_contract(&code) {
         return Err(parity_wasm::elements::Error::Other(
             "Contract doesn't meet ECI/EEI restrictions.",
