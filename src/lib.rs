@@ -29,16 +29,6 @@ fn validate_contract(module: &[u8]) -> bool {
         return false;
     }
 
-    // Ensure only valid imports are used.
-    if !VerifyImports::with_preset("ewasm, eth2")
-        .unwrap()
-        .validate(&module)
-        .unwrap()
-    {
-        panic!("verify imports failed");
-        return false;
-    }
-
     true
 }
 
