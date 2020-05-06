@@ -70,6 +70,7 @@ pub fn inject_metering(code: &[u8]) -> Result<Vec<u8>, parity_wasm::elements::Er
 }
 
 #[no_mangle]
+#[cfg(crate_type="cdylib")]
 pub extern "C" fn main() {
     let code = ewasm_api::calldata_acquire();
 
